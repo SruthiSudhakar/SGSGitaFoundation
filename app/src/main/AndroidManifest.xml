@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.meena.sgsgitafoundation">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@drawable/mysbatchtwo"
+        android:label="@string/app_name"
+        android:roundIcon="@drawable/mysbatchtwo"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".MainActivity"
+            android:label="@string/app_name"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".VisionActivity"
+            android:label="SGSGitaVision"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.meena.sgsgitafoundation.MainActivity" />
+        </activity>
+        <activity
+            android:name=".Swamiji"
+            android:label="Sri Swamiji"
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+
+            <!-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.meena.sgsgitafoundation.MainActivity" />
+        </activity>
+        <activity
+            android:name=".TimeLine"
+            android:label="@string/title_activity_time_line"
+            android:theme="@style/AppTheme.NoActionBar">
+            !-- Parent activity meta-data to support 4.0 and lower -->
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.example.meena.sgsgitafoundation.MainActivity" />
+        </activity>
+    </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+</manifest>
