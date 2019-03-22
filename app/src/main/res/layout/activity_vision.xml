@@ -46,21 +46,22 @@
     <TextView
         android:id="@+id/paratwo"
         android:layout_width="300dp"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:fontFamily="cursive"
+        android:scrollbars="vertical"
         android:text="--Parama Pujya Sri Sri Sri Ganapathy Sachchidananda Swamiji  "
         android:textAlignment="center"
         android:textSize="19sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.854" />
+        app:layout_constraintVertical_bias="0.96" />
 
     <TextView
         android:id="@+id/paraone"

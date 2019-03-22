@@ -23,15 +23,15 @@ public class MainActivity extends AppCompatActivity
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -86,7 +86,9 @@ public class MainActivity extends AppCompatActivity
             intent.putExtra("Tab", "Vision");
             startActivity(intent);
         } else if (id == R.id.swamiji) {
-            startActivity(new Intent(getApplicationContext(),Swamiji.class));
+            Intent intent = new Intent(getBaseContext(), VisionActivity.class);
+            intent.putExtra("Tab", "Swamiji");
+            startActivity(intent);
         } else if (id == R.id.program) {
             Intent intent = new Intent(getBaseContext(), VisionActivity.class);
             intent.putExtra("Tab", "Program");
@@ -95,12 +97,11 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(getBaseContext(), VisionActivity.class);
             intent.putExtra("Tab", "Journey");
             startActivity(intent);
-        } else if (id == R.id.timeline) {
-            startActivity(new Intent(getBaseContext(), TimeLine.class));
-
-        } /*else if (id == R.id.nav_send) {
-
-        }*/
+//        } else if (id == R.id.timeline) {
+//            startActivity(new Intent(getBaseContext(), TimeLine.class));
+        } else if (id == R.id.tutor) {
+            startActivity(new Intent(getBaseContext(), TutorApp.class));
+        }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);

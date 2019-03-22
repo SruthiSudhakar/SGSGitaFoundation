@@ -49,10 +49,8 @@ public class VisionActivity extends AppCompatActivity {
                         "\n" +
                         "To encourage and inspire everyone to memorize entire Bhagavad Gita, Sri Swamiji has made a resolve to present Gold medals and certificates to anyone who memorizes all 700 verses and performs in Mahayagna event in presence of Parama Pujya Sri Swamiji.\n" +
                         "\n" +
-                        "In this Mahayagna program, participants memorize all 18 chapters of the Bhagavad Gita within 10 months under able guidance of well-trained teachers. Participants in this program will be taught the precise pronunciation of each verse. This website provides unique tutorial application, for learning all 18 chapters of the Bhagavad Gita.\n" +
-                        "\n" +
-                        "With its unique model of classes in person, and virtual teaching online, Mahayagna program is growing rapidly with centers across various countries.");
-                paratwo.setText("");
+                        "In this Mahayagna program, participants memorize all 18 chapters of the Bhagavad Gita within 10 months under able guidance of well-trained teachers. Participants in this program will be taught the precise pronunciation of each verse. This website provides unique tutorial application, for learning all 18 chapters of the Bhagavad Gita.");
+                paratwo.setText("With its unique model of classes in person, and virtual teaching online, Mahayagna program is growing rapidly with centers across various countries.");
                 break;
             case "Journey":
                 title.setText("Journey");
@@ -61,6 +59,11 @@ public class VisionActivity extends AppCompatActivity {
                         "That’s how this beautiful Mahayagna journey started with children who mesmerized the whole world. Millions watched the program that was live webcast and also telecast on various TV Channels in India and in the US.");
                 paratwo.setText("...its an incredible journey!");
                 break;
+            case "Swamiji":
+                title.setText("Swamiji");
+                paraone.setText("His Holiness Parama Pujya Sri Ganapathy Sachchidananda Swamiji is the Pontiﬀ of Avadhoota Datta Peetham, Mysore, India. Sri Swamiji is renowned for His Meditation music and He is considered a divine guide who promotes the ancient Vedic traditions and spearheads many humanitarian and social welfare activities.");
+                paratwo.setText("“Each chapter of Bhagavad Gita and Mahabharata are like moral lessons. Do not treat them as mythological stories. If you treat so, many silly doubts and questions crop up. Study its inner meaning. Study Bhagavad Gita. Memorize and understand the versus. It has all the answers for the modern day perturbed mind.”");
+
         }
     }
 }

@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.MediaController;
 import android.widget.VideoView;
 
 public class TimeLine extends AppCompatActivity {
@@ -17,7 +18,7 @@ public class TimeLine extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_line);
-
+/*
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -36,9 +37,12 @@ public class TimeLine extends AppCompatActivity {
 
         // Enable the Up button
         ab.setDisplayHomeAsUpEnabled(true);
-        String s= getIntent().getStringExtra("Tab");
+        String s = getIntent().getStringExtra("Tab");
 
-        videoView = (VideoView)findViewById(R.id.videoView);
-        videoView.setVideoURI(Uri.parse("https://www.youtube.com/watch?v=8gv0rRtqJiY"));
+//        videoView = (VideoView) findViewById(R.id.videoView);
+//        Uri uri = Uri.parse("https://youtu.be/8gv0rRtqJiY");
+        videoView.setVideoURI(uri);
+        videoView.start();
+*/
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Vision">
+    <item android:title="Tabs">
         <menu>
             <item
                 android:id="@+id/vision"
@@ -15,53 +15,14 @@
                 android:id="@+id/program"
                 android:icon="@drawable/ic_menu_send"
                 android:title="Bhagavad Gita Mahayagna program " />
-        </menu>
-    </item>
-    <item android:title="Journey">
-        <menu>
             <item
                 android:id="@+id/journey"
                 android:icon="@drawable/ic_menu_send"
                 android:title="The Journey" />
             <item
-                android:id="@+id/timeline"
-                android:icon="@drawable/visioniconpic"
-                android:title="Timline of Events" />
-        </menu>
-    </item>
-    <group android:checkableBehavior="single">
-        <item
-            android:id="@+id/centers"
-            android:icon="@drawable/visioniconpic"
-            android:title="Bhagavad Gita Centers" />
-        <item
-            android:id="@+id/tutor"
-            android:icon="@drawable/ic_menu_gallery"
-            android:title="Tutor Application " />
-        <item
-            android:id="@+id/harhargita"
-            android:icon="@drawable/ic_menu_slideshow"
-            android:title="HARI - HAr ghaR gIta" />
-        <item
-            android:id="@+id/testimonials"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Testimonials" />
-        <item
-            android:id="@+id/reasources"
-            android:icon="@drawable/ic_menu_manage"
-            android:title="Resources!" />
-    </group>
-
-    <item android:title="Communicate">
-        <menu>
-            <item
-                android:id="@+id/nav_share"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Share" />
-            <item
-                android:id="@+id/nav_send"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Send" />
+                android:id="@+id/tutor"
+                android:icon="@drawable/ic_menu_gallery"
+                android:title="Tutor Application " />
         </menu>
     </item>
 
