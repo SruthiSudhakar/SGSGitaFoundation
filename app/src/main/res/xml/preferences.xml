@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="General">
+        <ListPreference
+            android:dialogTitle="Select Language"
+            android:entries="@array/settings_list_preference_languages"
+            android:entryValues="@array/settings_list_preference_languages_values"
+            android:key="language"
+            android:title="Select Language" />
+        <ListPreference
+            android:dialogTitle="Select Chapter"
+            android:entries="@array/chapter_names_devanagri"
+            android:entryValues="@array/chapter_names_values"
+            android:key="chapter"
+            android:title="Select Chapter" />
+        <ListPreference
+            android:dialogTitle="Select Mode"
+            android:entries="@array/settings_list_preference_mode"
+            android:entryValues="@array/settings_list_preference_languages_values"
+            android:key="mode"
+            android:title="Select Mode" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

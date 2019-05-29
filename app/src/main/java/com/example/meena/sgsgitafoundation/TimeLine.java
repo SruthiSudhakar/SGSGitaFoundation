@@ -27,11 +27,12 @@ public class TimeLine extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+*/
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar =
                 (Toolbar) findViewById(R.id.timelinetoolbar);
         setSupportActionBar(myChildToolbar);
-
+        myChildToolbar.setTitle("TimeLine");
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
 
@@ -41,8 +42,7 @@ public class TimeLine extends AppCompatActivity {
 
 //        videoView = (VideoView) findViewById(R.id.videoView);
 //        Uri uri = Uri.parse("https://youtu.be/8gv0rRtqJiY");
-        videoView.setVideoURI(uri);
-        videoView.start();
-*/
+//        videoView.setVideoURI(uri);
+//        videoView.start();
     }
 }

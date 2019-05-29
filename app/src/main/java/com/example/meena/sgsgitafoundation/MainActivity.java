@@ -97,8 +97,16 @@ public class MainActivity extends AppCompatActivity
             Intent intent = new Intent(getBaseContext(), VisionActivity.class);
             intent.putExtra("Tab", "Journey");
             startActivity(intent);
-//        } else if (id == R.id.timeline) {
-//            startActivity(new Intent(getBaseContext(), TimeLine.class));
+        } else if (id == R.id.timeline) {
+            startActivity(new Intent(getBaseContext(), TimeLine.class));
+        } else if (id == R.id.upcoming) {
+            Intent intent = new Intent(getBaseContext(), VisionActivity.class);
+            intent.putExtra("Tab", "Upcoming");
+            startActivity(intent);
+//        } else if (id == R.id.centers) {
+//            Intent intent = new Intent(getBaseContext(), VisionActivity.class);
+//            intent.putExtra("Tab", "Centers");
+//            startActivity(intent);
         } else if (id == R.id.tutor) {
             startActivity(new Intent(getBaseContext(), TutorApp.class));
         }

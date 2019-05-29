@@ -95,27 +95,81 @@
         "For example, position the FAB to one side of stream of a cards so the FAB won’t interfere "
         "when a user tries to pick up one of cards.\n\n"
     </string>
+    <string-array name="settings_list_preference_languages">
+        <item>Devanagari</item>
+        <item>English</item>
+    </string-array>
+    <string-array name="settings_list_preference_languages_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+    <string-array name="settings_list_preference_mode">
+        <item>Non-Tutorial Mode</item>
+        <item>Tutorial Mode</item>
+    </string-array>
     <string name="title_activity_tutor_app">TutorApp</string>
+    <string-array name="chapter_names_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+        <item>11</item>
+        <item>12</item>
+        <item>13</item>
+        <item>14</item>
+        <item>15</item>
+        <item>16</item>
+        <item>17</item>
+        <item>18</item>
+    </string-array>
     <string-array name="chapter_names">
-        <item>Gita Dhyana Shloka</item>
-        <item>Arjuan Visada Yogah</item>
-        <item>Sankhya Yogah</item>
-        <item>Karma Yogah</item>
-        <item>Jnana Yogah</item>
-        <item>Karma Sannyasa Yogah</item>
-        <item>Atma Sammyama Yogah</item>
-        <item>Jnana Vijana Yogah</item>
-        <item>Aksara Parabhrama Yogah</item>
-        <item>Rajavidya Rajaguyha Yoah</item>
-        <item>Vibhuti Yogah</item>
-        <item>Viswarupasandarshana Yogah</item>
-        <item>Bhakti Yogah</item>
-        <item>Kestra-kestrajana Vibhaga Yogah</item>
-        <item>Gunatraya Vibhaga Yogah</item>
-        <item>Purosottama Prapti Yogah</item>
-        <item>Daviasurasampad Vibhaga Yogah</item>
-        <item>Sraddhatraya Vibhaga Yogah</item>
-        <item>Moksa Sannyasa Yogah</item>
+        <item>gītā dhyāna ślokāḥ </item>
+        <item>01 arjunaviṣādayogaḥ</item>
+        <item>02 sāṅkhyayogaḥ</item>
+        <item>03 karmayogaḥ</item>
+        <item>04 jñānayogaḥ</item>
+        <item>05 karmasannyāsayogaḥ</item>
+        <item>06 ātmasaṃyamayogaḥ</item>
+        <item>07 jñānavijñānayogaḥ</item>
+        <item>08 akṣarabrahmayogaḥ</item>
+        <item>09 rājavidyārājaguhyayogaḥ</item>
+        <item>10 vibhūtiyogaḥ</item>
+        <item>11 viśvarūpadarśanayogaḥ</item>
+        <item>12 bhaktiyogaḥ</item>
+        <item>13 kṣetrakṣetrajñavibhāgayogaḥ</item>
+        <item>14 guṇatrayavibhāgayogaḥ</item>
+        <item>15 puruṣottamayogaḥ</item>
+        <item>16 daivāsurasampadvibhāgayogaḥ</item>
+        <item>17 śraddhātrayavibhāgayogaḥ</item>
+        <item>18 mokṣasannyāsayogaḥ</item>
+    </string-array>
+    <string-array name="chapter_names_devanagri">
+        <item>गीता  ध्यान  श्लोका</item>
+        <item>01 अर्जुनविषादयोग</item>
+        <item>02 साङ्ख्ययोग</item>
+        <item>03 कर्मयोग:</item>
+        <item>04 ज्ञानयोग:</item>
+        <item>05 कर्मस्न्न्यासयोग:</item>
+        <item>06 आत्मसंयमयोग:</item>
+        <item>07 ज्ञानविज्ञानयोग:</item>
+        <item>08 अक्षरपरब्रह्मयोगः</item>
+        <item>09 राजविद्याराजगुह्ययोग</item>
+        <item>10 विभूतियोग:</item>
+        <item>11 विश्वरूपदर्शनयोग:</item>
+        <item>12 भक्तियोग:</item>
+        <item>13 क्षेत्रक्षेत्रज्ञविभागयोग</item>
+        <item>14 गुणत्रयविभागयोगयोग:</item>
+        <item>15 पुरुषोत्तमप्राप्तियोग</item>
+        <item>16 दैवासुरसम्पद्विभागयोग</item>
+        <item>17 श्रद्धात्रयविभागयोग</item>
+        <item>18 मोक्षसन्न्यासयोग</item>
     </string-array>
     <string-array name="plain_urls_array">
         <item>http://sgsgitafoundation.org/bg/00/plain_chapter.m4a</item>
@@ -159,7 +213,7 @@
         <item>http://sgsgitafoundation.org/bg/17/tutor_chapter.m4a</item>
         <item>http://sgsgitafoundation.org/bg/18/tutor_chapter.m4a</item>
     </string-array>
-z
+    z
     <string-array name="plain_jsons_array">
         <item>http://sgsgitafoundation.org/bg/00/plain_chapter.json</item>
         <item>http://sgsgitafoundation.org/bg/01/plain_chapter.json</item>

@@ -4,7 +4,11 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
+import android.text.SpannableString;
+import android.text.Spanned;
 import android.text.method.ScrollingMovementMethod;
+import android.text.style.BulletSpan;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -21,12 +25,11 @@ public class VisionActivity extends AppCompatActivity {
         paraone = (TextView) findViewById(R.id.paraone);
         paratwo = (TextView) findViewById(R.id.paratwo);
         paraone.setMovementMethod(new ScrollingMovementMethod());
-
+        paratwo.setMovementMethod(new ScrollingMovementMethod());
         // my_child_toolbar is defined in the layout file
         Toolbar myChildToolbar =
                 (Toolbar) findViewById(R.id.visionToolbar);
         setSupportActionBar(myChildToolbar);
-
         // Get a support ActionBar corresponding to this toolbar
         ActionBar ab = getSupportActionBar();
 
@@ -37,12 +40,16 @@ public class VisionActivity extends AppCompatActivity {
         {
             case "Vision":
                 title.setTextSize(36);
+                myChildToolbar.setTitle("Vision");
+
                 title.setText("Vision");
                 paraone.setText("\"If the Upanishads present the aim and purpose of human life, the Bhagavad Gita indicates the way to attain them and live a life of fulfillment. By faithfully following that path shown by the Bhagavad Gita, man can make his life sublime, leave behind his footprints on the sands of time.\"");
                 paratwo.setText("--Parama Pujya Sri Sri Sri Ganapathy Sachchidananda Swamiji");
                 break;
             case "Program":
                 title.setTextSize(20);
+                myChildToolbar.setTitle("Program");
+
                 title.setText("Bhagavad Gita Mahayagna program");
                 paraone.setHeight(700);
                 paraone.setText("Gita Mahayagna program has been initiated per vision and blessings of Parama Pujya Sri Ganapathy Sachchidananda Swamiji. As part of this program, 220 students of ages 5 – 50 years underwent an intensive training and successfully completed memorization of entire Bhagavad Gita in just 10 months since its inception in 2015.\n" +
@@ -54,6 +61,8 @@ public class VisionActivity extends AppCompatActivity {
                 break;
             case "Journey":
                 title.setText("Journey");
+                myChildToolbar.setTitle("Journey");
+
                 paraone.setText("Pujya Sri Swamiji expressed His wish to see at least 18 children memorize all 18 Chapters of Srimad Bhagavad Gita during Karya Siddhi Hanuman temple inauguration in Dallas, TX in 2015. Astoundingly, inspired by the call and out of love for Pujya Sri Swamiji, Whom they lovingly call \"Tataji\", 43 children, as young as 7 years to 16 years memorized all 700 shlokas in less that 10 months. They also learnt the meanings of selected shlokas and got ready by the next year visit of Pujya Sri Swamiji to the US in summer 2016.\n" +
                         "\n" +
                         "That’s how this beautiful Mahayagna journey started with children who mesmerized the whole world. Millions watched the program that was live webcast and also telecast on various TV Channels in India and in the US.");
@@ -61,9 +70,18 @@ public class VisionActivity extends AppCompatActivity {
                 break;
             case "Swamiji":
                 title.setText("Swamiji");
+                myChildToolbar.setTitle("Swamiji");
+
                 paraone.setText("His Holiness Parama Pujya Sri Ganapathy Sachchidananda Swamiji is the Pontiﬀ of Avadhoota Datta Peetham, Mysore, India. Sri Swamiji is renowned for His Meditation music and He is considered a divine guide who promotes the ancient Vedic traditions and spearheads many humanitarian and social welfare activities.");
                 paratwo.setText("“Each chapter of Bhagavad Gita and Mahabharata are like moral lessons. Do not treat them as mythological stories. If you treat so, many silly doubts and questions crop up. Study its inner meaning. Study Bhagavad Gita. Memorize and understand the versus. It has all the answers for the modern day perturbed mind.”");
-
+                break;
+            case "Upcoming":
+                title.setText("Upcoming Events");
+                myChildToolbar.setTitle("Upcoming Events");
+                String htmlString = "<ul> " +
+                        "<li>Sampoorna Bhagavad Gita Parayana by Batch 4 on July 20, 2019 in Dallas!\n</li>" +
+                        "</ul>";
+                paraone.setText(Html.fromHtml(htmlString));
         }
     }
 }

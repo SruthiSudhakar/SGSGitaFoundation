@@ -18,14 +18,15 @@
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
             android:name=".VisionActivity"
             android:label="SGSGitaVision"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
@@ -34,8 +35,8 @@
         <activity
             android:name=".Swamiji"
             android:label="Sri Swamiji"
-            android:screenOrientation="portrait"
             android:parentActivityName=".MainActivity"
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar">
 
             <!-- Parent activity meta-data to support 4.0 and lower -->
@@ -56,8 +57,14 @@
             android:name=".TutorApp"
             android:label="@string/title_activity_tutor_app"
             android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".SettingsPrefActivity"
+            android:label="Settings"
+            android:parentActivityName="AppCompatPreferenceActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <!--<activity android:name=".SettingsActivity"></activity>-->
     </application>
 
 </manifest>

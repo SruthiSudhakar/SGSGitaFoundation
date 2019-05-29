@@ -3,17 +3,22 @@ package com.example.meena.sgsgitafoundation;
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.content.pm.PackageManager;
+import android.content.Intent;
 import android.content.res.AssetManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
 import android.net.Uri;
+import android.net.sip.SipSession;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.annotation.NonNull;
+import android.preference.ListPreference;
+import android.preference.Preference;
+import android.preference.PreferenceFragment;
+import android.support.annotation.Nullable;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.InputFilter;
@@ -22,24 +27,22 @@ import android.text.Spanned;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.Window;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.ListView;
 import android.widget.SeekBar;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 import android.widget.Toast;
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -47,22 +50,16 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 import org.json.simple.*;
 import org.json.simple.parser.*;
-import org.w3c.dom.Text;
-
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import com.google.gson.*;
 import com.squareup.okhttp.*;
 //TODO: 2 shlokas per view
 //store text, audio, etc. in datastrcuture. along with english version.
 //generate json files for each language. so parse different languages.
-//put the seekbar at the bottom
 //multi-thread it. as they finish, they insert data in. two threads cant write into strcuture at once. locking data structure
 public class TutorApp extends AppCompatActivity {
     MediaPlayer sara;
@@ -70,19 +67,19 @@ public class TutorApp extends AppCompatActivity {
     SeekBar speedBar;
     Button play_tutorial;
     Button go;
-    Spinner dropdown;
+    Spinner chapter_dropdown;
     Spinner tutorial_mode_spinner;
     Spinner language_spinner;
     EditText startRange;
-    //EditText endRange;
-    ArrayAdapter<String> adapter;
+    EditText endRange;
+    ArrayAdapter<String> chapter_adapter;
     ArrayAdapter<String> tutorial_adapter;
     ArrayAdapter<String> language_adapter;
     CustomAdapter shlokaListViewAdapter;
     ListView shlokaListView;
     List<String> plainortutor = new ArrayList<>();
     List<String> languageList = new ArrayList<>();
-    List<String> audioClips;
+    ArrayList<String> chapterNames = new ArrayList<>();
     List<String> plain_urls = new ArrayList<>();
     List<String> tutorial_urls = new ArrayList<>();
     List<String> plain_json_urls = new ArrayList<>();
@@ -109,6 +106,13 @@ public class TutorApp extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tutor_app);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        // my_child_toolbar is defined in the layout file
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Tutorial Application");
+        // Get a support ActionBar corresponding to this toolbar
+        ActionBar ab = getSupportActionBar();
+        // Enable the Up button
+        ab.setDisplayHomeAsUpEnabled(true);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
         this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
         am = mContext.getAssets();
@@ -116,26 +120,26 @@ public class TutorApp extends AppCompatActivity {
         seekBar = (SeekBar) findViewById(R.id.seekBar_id);
         speedBar = (SeekBar) findViewById(R.id.speedbar_id);
         startRange = (EditText) findViewById(R.id.startRange_id);
-        //endRange = (EditText) findViewById(R.id.endRange_id);
+        endRange = (EditText) findViewById(R.id.endRange_id);
         play_tutorial  = (Button) findViewById(R.id.play_tutorial);
         //tutorial_mode = (Switch) findViewById(R.id.tutorial_switch_id);
         tutorial_mode_spinner = (Spinner) findViewById(R.id.tutorials_spinner_id);
         language_spinner = (Spinner) findViewById(R.id.language_spinner_id);
-        dropdown = (Spinner) findViewById(R.id.spinner);
-        audioClips = Arrays.asList(getResources().getStringArray(R.array.chapter_names));
+        chapter_dropdown = (Spinner) findViewById(R.id.chapter_spinner_id);
+        chapterNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.chapter_names_devanagri)));
         plain_urls = Arrays.asList(getResources().getStringArray(R.array.plain_urls_array));
         tutorial_urls = Arrays.asList(getResources().getStringArray(R.array.tutorial_urls_array));
         plain_json_urls = Arrays.asList(getResources().getStringArray(R.array.plain_jsons_array));
         tutorial_json_urls = Arrays.asList(getResources().getStringArray(R.array.tutorial_jsons_array));
-        plainortutor.add("Plain Mode");
+        plainortutor.add("Non-Tutorial Mode");
         plainortutor.add("Tutorial Mode");
         languageList.add("Devanagari");
         languageList.add("English");
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, audioClips);
+        chapter_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, chapterNames);
         tutorial_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, plainortutor);
         language_adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, languageList);
         startRange.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2,1)});
-//        endRange.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2,1)});
+        endRange.setFilters(new InputFilter[] {new DecimalDigitsInputFilter(2,1)});
         Log.d("MEDIA PLAYER RE",""+MediaPlayer.create(TutorApp.this, Uri.parse("http://sgsgitafoundation.org/bg/00/plain_chapter.m4a")));
 //        sara = new MediaPlayer();
         sara = MediaPlayer.create(TutorApp.this, Uri.parse("http://sgsgitafoundation.org/bg/00/plain_chapter.m4a"));
@@ -168,7 +172,7 @@ public class TutorApp extends AppCompatActivity {
         params.width = widthPixels - 50;
         shlokaListView.setLayoutParams(params);
         shlokaListView.requestLayout();
-        dropdown.setAdapter(adapter);
+        chapter_dropdown.setAdapter(chapter_adapter);
         tutorial_mode_spinner.setAdapter(tutorial_adapter);
         language_spinner.setAdapter(language_adapter);
         shlokaListView.setAdapter(shlokaListViewAdapter);
@@ -189,10 +193,10 @@ public class TutorApp extends AppCompatActivity {
 
             }
         });
+        speedBar.setMax(5);
         speedBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-//                Log.d("speedBar go","in method+ "+progress);
                 if (fromUser) {
                     if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                         if (!sara.isPlaying()) {
@@ -283,13 +287,13 @@ public class TutorApp extends AppCompatActivity {
                     new LoadTextCells().execute("");
                     sara.stop();
                     play_tutorial.setText("Play");
-                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(tutorial_urls.get(dropdown.getSelectedItemPosition())));
+                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(tutorial_urls.get(chapter_dropdown.getSelectedItemPosition())));
                     sara.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 } else {
                     new LoadTextCells().execute("");
                     sara.stop();
                     play_tutorial.setText("Play");
-                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(plain_urls.get(dropdown.getSelectedItemPosition())));
+                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(plain_urls.get(chapter_dropdown.getSelectedItemPosition())));
                     sara.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 }
             }
@@ -299,7 +303,7 @@ public class TutorApp extends AppCompatActivity {
 
             }
         });
-        dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        chapter_dropdown.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
                 sara.stop();
@@ -338,14 +342,28 @@ public class TutorApp extends AppCompatActivity {
                 dialog.show();
                 if (tutorial_mode_spinner.getSelectedItemPosition() == 1) {
                     new LoadTextCells().execute("");
-                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(tutorial_urls.get(dropdown.getSelectedItemPosition())));
+                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(tutorial_urls.get(chapter_dropdown.getSelectedItemPosition())));
                     sara.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 } else {
                     new LoadTextCells().execute("");
-                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(plain_urls.get(dropdown.getSelectedItemPosition())));
+                    sara = MediaPlayer.create(TutorApp.this, Uri.parse(plain_urls.get(chapter_dropdown.getSelectedItemPosition())));
                     sara.setAudioStreamType(AudioManager.STREAM_MUSIC);
                 }
                 play_tutorial.setText("Play");
+
+                if (position == 0) {
+                    chapterNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.chapter_names_devanagri)));
+                    chapter_dropdown.setPrompt("Choose Chapter");
+                    Log.d("CHAPTER LANGUAGE CHANGE", "There was a chapter change to devanagri");
+                } else {
+                    chapterNames = new ArrayList<String>(Arrays.asList(getResources().getStringArray(R.array.chapter_names)));
+                    chapter_dropdown.setPrompt("Choose Chapter");
+                    Log.d("CHAPTER LANGUAGE CHANGE", "There was a chapter change to english");
+                }
+                chapter_adapter.clear();
+                chapter_adapter.addAll(chapterNames);
+                chapter_adapter.notifyDataSetChanged();
+                Log.d("CHAPTER LANGUAGE CHANGE", "notfied of change");
             }
             @Override
             public void onNothingSelected(AdapterView<?> parentView) {}
@@ -365,11 +383,11 @@ public class TutorApp extends AppCompatActivity {
             shlokaListView.smoothScrollToPosition(x-1);
             try {
                 if (x > 0) {
-                    Log.d("CLASS NAMES: ", x-1 + "   " + shlokaListView.getFirstVisiblePosition() );
-                    ((TextView)(shlokaListView.getChildAt(x - shlokaListView.getFirstVisiblePosition() ).findViewById(R.id.individual_shloka_textview_id))).setTextColor(Color.rgb(0,0,255));
+//                    Log.d("CLASS NAMES: ", x-1 + "   " + shlokaListView.getFirstVisiblePosition() );
+//                    ((TextView)(shlokaListView.getChildAt(x - shlokaListView.getFirstVisiblePosition() ).findViewById(R.id.individual_shloka_textview_id))).setTextColor(Color.rgb(0,0,255));
                 }
             } catch (Exception e) {
-                Log.d("CLASS NAMES: ", e.getMessage());
+//                Log.d("CLASS NAMES: ", e.getMessage());
             }
 
             mSeekbarUpdateHandler.postDelayed(this, 500);
@@ -427,15 +445,15 @@ public class TutorApp extends AppCompatActivity {
                 finalS="";
                 URL yahoo;
                 if (tutorial_mode_spinner.getSelectedItemPosition() == 1) {
-//                    Log.d("loadData() json info: "," chapter loading: "+tutorial_json_urls.get(dropdown.getSelectedItemPosition())+"");
-                    yahoo = new URL(tutorial_json_urls.get(dropdown.getSelectedItemPosition()));
-                    if (dropdown.getSelectedItemPosition() == 0) {
-                        yahoo = new URL(plain_json_urls.get(dropdown.getSelectedItemPosition()));
+//                    Log.d("loadData() json info: "," chapter loading: "+tutorial_json_urls.get(chapter_dropdown.getSelectedItemPosition())+"");
+                    yahoo = new URL(tutorial_json_urls.get(chapter_dropdown.getSelectedItemPosition()));
+                    if (chapter_dropdown.getSelectedItemPosition() == 0) {
+                        yahoo = new URL(plain_json_urls.get(chapter_dropdown.getSelectedItemPosition()));
                         //Log.d("SHOWING TOAST", "SHOWING TOAST");
                     }
                 } else {
-//                    Log.d("loadData() json info: "," chapter loading: "+plain_json_urls.get(dropdown.getSelectedItemPosition())+"");
-                    yahoo = new URL(plain_json_urls.get(dropdown.getSelectedItemPosition()));
+//                    Log.d("loadData() json info: "," chapter loading: "+plain_json_urls.get(chapter_dropdown.getSelectedItemPosition())+"");
+                    yahoo = new URL(plain_json_urls.get(chapter_dropdown.getSelectedItemPosition()));
                 }
 //                Log.d("CHECKTIME: ","before buffered reader--- " + Calendar.getInstance().getTime());
 //                BufferedReader in = new BufferedReader(new InputStreamReader(yahoo.openStream(),"UTF-8"));
@@ -489,7 +507,7 @@ public class TutorApp extends AppCompatActivity {
                             returnString = returnString + text + "\n";
                         }
                         else {
-                            if (dropdown.getSelectedItemPosition() != 0) {
+                            if (chapter_dropdown.getSelectedItemPosition() != 0) {
                                 if (line.get("teacher").toString().contains("YS")) {
                                     returnString = returnString + text + "\n";
                                 }
@@ -535,15 +553,15 @@ public class TutorApp extends AppCompatActivity {
             if (dialog.isShowing()) {
                 dialog.dismiss();
             }
-            if ((tutorial_mode_spinner.getSelectedItemPosition() == 1)&&(dropdown.getSelectedItemPosition() == 0)) {
+            if ((tutorial_mode_spinner.getSelectedItemPosition() == 1)&&(chapter_dropdown.getSelectedItemPosition() == 0)) {
                 Toast.makeText(TutorApp.this,"No tutorial mode for Dhyana Shloka. Playing plain mode.", Toast.LENGTH_LONG).show();
                 Log.d("SHOWING TOAST", "SHOWING TOAST");
             }
             startRange.setText(String.valueOf(0));
-//            endRange.setText(String.valueOf(shloka_text_list.size()-2));
+            endRange.setText(String.valueOf(shloka_text_list.size()-2));
 //            Log.d("EDIT TEXTS: ", startRange.getText().toString());
             seekBar.setMax(shloka_text_list.size()-1);
-            speedBar.setMax(10);
+            speedBar.setMax(5);
             seekBar.setProgress(0);
             speedBar.setProgress(0);
             currentShloka = 0;
@@ -753,10 +771,10 @@ public class TutorApp extends AppCompatActivity {
         Log.d("Life Cycle", "Restart");
         play_tutorial.setText("Play");
         if (tutorial_mode_spinner.getSelectedItemPosition() == 1) {
-            sara = MediaPlayer.create(TutorApp.this, Uri.parse(tutorial_urls.get(dropdown.getSelectedItemPosition())));
+            sara = MediaPlayer.create(TutorApp.this, Uri.parse(tutorial_urls.get(chapter_dropdown.getSelectedItemPosition())));
             sara.setAudioStreamType(AudioManager.STREAM_MUSIC);
         } else {
-            sara = MediaPlayer.create(TutorApp.this, Uri.parse(plain_urls.get(dropdown.getSelectedItemPosition())));
+            sara = MediaPlayer.create(TutorApp.this, Uri.parse(plain_urls.get(chapter_dropdown.getSelectedItemPosition())));
             sara.setAudioStreamType(AudioManager.STREAM_MUSIC);
         }
     }
@@ -784,7 +802,79 @@ public class TutorApp extends AppCompatActivity {
         super.onStart();
         Log.d("Life Cycle", "Start");
     }
+    @SuppressLint("ResourceType")
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                onBackPressed();
+                return true;
+            case R.id.action_settings:
+//                getFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.top_layout_id, new MySettingsFragment()).commit();
+                startActivity(new Intent(TutorApp.this, SettingsPrefActivity.class));
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_tutor, menu);
+        return true;
+    }
+//    public static class MySettingsFragment extends PreferenceFragment {
+//        @Override
+//        public void onCreate(@Nullable Bundle savedInstanceState) {
+//            super.onCreate(savedInstanceState);
+//            addPreferencesFromResource(R.xml.preferences);
+//            findPreference("language").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//                @Override
+//                public boolean onPreferenceChange(Preference preference, Object newValue) {
+//                    String stringValue = newValue.toString();
+//                    ListPreference listPreference = (ListPreference) preference;
+//                    int index = (listPreference).findIndexOfValue(stringValue);
+//                    listPreference.setSummary(listPreference.getEntries()[index]);
+//                    if (index == 0) {
+//                        ((ListPreference) findPreference("chapter")).setEntries(R.array.chapter_names_devanagri);
+//                        findPreference("chapter").setSummary(((ListPreference)findPreference("chapter")).getEntries()[index]);
+//                    } else {
+//                        ((ListPreference) findPreference("chapter")).setEntries(R.array.chapter_names);
+//                        findPreference("chapter").setSummary(((ListPreference)findPreference("chapter")).getEntries()[index]);
+//
+//                    }
+//                    // Set the summary to reflect the new value.
+//                    return true;
+//                }
+//            });
+//            findPreference("chapter").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//                @Override
+//                public boolean onPreferenceChange(Preference preference, Object newValue) {
+//                    String stringValue = newValue.toString();
+//                    ListPreference listPreference = (ListPreference) preference;
+//                    int index = (listPreference).findIndexOfValue(stringValue);
+//                    listPreference.setSummary(listPreference.getEntries()[index]);
+//                    // Set the summary to reflect the new value.
+//                    return true;
+//                }
+//            });
+//            findPreference("mode").setOnPreferenceChangeListener(new Preference.OnPreferenceChangeListener() {
+//                @Override
+//                public boolean onPreferenceChange(Preference preference, Object newValue) {
+//                    String stringValue = newValue.toString();
+//                    ListPreference listPreference = (ListPreference) preference;
+//                    int index = (listPreference).findIndexOfValue(stringValue);
+//                    listPreference.setSummary(listPreference.getEntries()[index]);
+//                    // Set the summary to reflect the new value.
+//                    return true;
+//                }
+//            });
+//        }
+//    }
 }
+
+
 
 
 

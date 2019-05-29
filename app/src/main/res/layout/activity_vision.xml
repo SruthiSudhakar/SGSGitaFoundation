@@ -19,7 +19,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:title="Vision" />
 
     </android.support.design.widget.AppBarLayout>
 
@@ -28,8 +29,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
         android:text="Vision"
         android:textAllCaps="false"
@@ -37,19 +36,22 @@
         android:textSize="36sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.167" />
+        app:layout_constraintVertical_bias="0.123" />
 
     <TextView
         android:id="@+id/paratwo"
         android:layout_width="300dp"
-        android:layout_height="100dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:fadeScrollbars="false"
         android:fontFamily="cursive"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
         android:scrollbars="vertical"
         android:text="--Parama Pujya Sri Sri Sri Ganapathy Sachchidananda Swamiji  "
         android:textAlignment="center"
@@ -60,43 +62,45 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96" />
+        app:layout_constraintTop_toBottomOf="@+id/paraone" />
 
     <TextView
         android:id="@+id/paraone"
         android:layout_width="340dp"
-        android:layout_height="200dp"
+        android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
         android:layout_marginTop="8dp"
+        android:fadeScrollbars="false"
         android:fontFamily="sans-serif-condensed"
         android:lineSpacingExtra="3sp"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
         android:text='"If the Upanishads present the aim and purpose of human life, the Bhagavad Gita indicates the way to attain them and live a life of fulfillment. By faithfully following that path shown by the Bhagavad Gita, man can make his life sublime, leave behind his footprints on the sands of time."'
         android:textAlignment="center"
         android:textSize="18sp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.623"
-        android:scrollbars="vertical" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView5"
+        app:layout_constraintVertical_bias="0.067" />
 
     <ImageView
         android:id="@+id/imageView5"
         android:layout_width="206dp"
         android:layout_height="7dp"
-        app:srcCompat="@drawable/blueline"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        android:layout_marginBottom="8dp"
-        android:layout_marginLeft="0dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.523"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintVertical_bias="0.274"
-        android:layout_marginRight="8dp"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintHorizontal_bias="0.523" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.204"
+        app:srcCompat="@drawable/blueline" />
 
 </android.support.constraint.ConstraintLayout>

@@ -27,18 +27,13 @@
                 <com.vipul.hp_hp.timelineview.TimelineView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingLeft="30dp"
+                    android:paddingLeft="10dp"
+                    android:visibility="visible"
                     app:line="@color/colorLine"
                     app:line_size="1dp"
                     app:marker="@drawable/timelinedot"
                     app:marker_size="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="August 2015"
-                    android:textColor="@color/colorLine"
-                    android:textSize="10dp" />
             </LinearLayout>
 
             <LinearLayout
@@ -46,15 +41,101 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="August 2015"
+                        android:textColor="@color/colorLine"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="The Divine Sankalpa"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:paddingBottom="10dp"
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:paddingTop="10dp"
-                    android:text="The Begining of the First Batch"
-                    android:textSize="18dp" />
+                    android:text="His Holiness Sri Ganapathy Sachchidananda Swamiji envisioned to see atleast 18 children memorize the entire Bhagavad Gita. The children who adore and revere Pujya Swamiji promised to do so."
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.vipul.hp_hp.timelineview.TimelineView
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:paddingLeft="10dp"
+                    android:visibility="visible"
+                    app:line="@color/colorLine"
+                    app:line_size="1dp"
+                    app:marker="@drawable/timelinedot"
+                    app:marker_size="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="August 2015"
+                        android:textColor="@color/colorLine"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="The Begining of the First Batch"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -84,34 +165,45 @@
                 <com.vipul.hp_hp.timelineview.TimelineView
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
-                    android:paddingLeft="30dp"
+                    android:paddingLeft="10dp"
                     app:line="@color/colorLine"
                     app:line_size="1dp"
                     app:marker="@drawable/timelinedot"
                     app:marker_size="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="July 2016"
-                    android:textColor="@color/colorLine"
-                    android:textSize="10dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="10dp"
-                    android:text="First Recitation History Was Made"
-                    android:textSize="18dp" />
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="July 2016"
+                        android:textColor="@color/colorLine"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="First Recitation History Was Made"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -129,7 +221,7 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <LinearLayout
@@ -140,35 +232,46 @@
 
                 <com.vipul.hp_hp.timelineview.TimelineView
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:paddingLeft="30dp"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="10dp"
                     app:line="@color/colorLine"
                     app:line_size="1dp"
                     app:marker="@drawable/timelinedot"
                     app:marker_size="20dp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="August 2015"
-                    android:textColor="@color/colorLine"
-                    android:textSize="10dp" />
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
                 android:orientation="vertical">
 
-                <TextView
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingBottom="10dp"
-                    android:paddingLeft="5dp"
-                    android:paddingRight="5dp"
-                    android:paddingTop="10dp"
-                    android:text="The Begining of the First Batch"
-                    android:textSize="18dp" />
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="July 2016"
+                        android:textColor="@color/colorLine"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="Introduction of Reading Category for Adults"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -177,7 +280,221 @@
                     android:paddingLeft="5dp"
                     android:paddingRight="5dp"
                     android:paddingTop="10dp"
-                    android:text="In this Mahayagna program, participants memorize all 18 chapters of the Bhagavad Gita within 10 months under able guidance of well-trained teachers. Participants in this program will be taught the precise pronunciation of each verse. This website provides unique tutorial application, for learning all 18 chapters of the Bhagavad Gita. With its unique model of classes in person, and virtual teaching online, Mahayagna program is growing rapidly with centers across various countries."
+                    android:text="After the first successful and spectacular chanting event by the children in Dallas, Sri Swamiji gave permission to introduce a reading category for Adults. Following the success of the first batch, hundreds of students enroll in reading and memorization categories for the next batch.  "
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.vipul.hp_hp.timelineview.TimelineView
+                    android:id="@+id/timelineView8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:visibility="visible"
+                    app:line="@color/colorLine"
+                    app:line_size="1dp"
+                    app:marker="@drawable/timelinedot"
+                    app:marker_size="20dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="December 2016"
+                        android:textColor="@color/colorLine"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="15 Children Memorize Entire Gita in 4 Months"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="During the sacred Dattatreya Jayanti Celebrations, 15 children from Mysore, India amaze everyone by learning the entire Bhagavad Gita in 4 months and chanting it from memory in divine presence of Parama Pujya Sri Swamiji on December 13, 2016.  "
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.vipul.hp_hp.timelineview.TimelineView
+                    android:id="@+id/timelineView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:visibility="visible"
+                    app:line="@color/colorLine"
+                    app:line_size="1dp"
+                    app:marker="@drawable/timelinedot"
+                    app:marker_size="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="December 2016"
+                        android:textColor="@color/colorLine"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="Recitation by First Batch, Mysore, India"
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="52 children were thrilled to travel to India with their families to chant the Sampoorna Bhagavad Gita in the spectacular and esteemed, Nada Mantapa at Avadhoota Datta Peetham, Mysore, at the behest of His Holiness on 25th December, 2016
+
+"
+                    android:textAlignment="center" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <com.vipul.hp_hp.timelineview.TimelineView
+                    android:id="@+id/timelineView7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingLeft="10dp"
+                    android:visibility="visible"
+                    app:line="@color/colorLine"
+                    app:line_size="1dp"
+                    app:marker="@drawable/timelinedot"
+                    app:marker_size="20dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="December 2016"
+                        android:textColor="@color/colorLine"
+                        android:textSize="10dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:paddingBottom="10dp"
+                        android:paddingLeft="5dp"
+                        android:paddingRight="5dp"
+                        android:paddingTop="10dp"
+                        android:text="NRI Children Recieve Gold Medals, Certificates, and Mementos "
+                        android:textSize="18dp" />
+
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="10dp"
+                    android:paddingLeft="5dp"
+                    android:paddingRight="5dp"
+                    android:paddingTop="10dp"
+                    android:text="Sri Swamiji personally presents gold medals, gold embossed certificates with invaluable signature of Sri Swamiji and mementos to all the participants who memorized all 700 verses and performed in the divine presence of Sri Swamiji in the Sampoorna Gita parayana event on 25th December, 2016."
                     android:textAlignment="center" />
 
             </LinearLayout>
